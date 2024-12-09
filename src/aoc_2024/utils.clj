@@ -4,7 +4,7 @@
    [clojure.string :as str]))
 
 (defn read-input
-  [d & {:keys [lines] :or {lines true}}]
-  (cond-> (slurp (io/resource (str "day" d ".txt")))
+  [d & {:keys [lines raw] :or {lines true}}]
+  (cond-> (or raw (slurp (io/resource (str "day" d ".txt"))))
     lines
     (str/split-lines)))
